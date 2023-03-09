@@ -37,6 +37,11 @@ export default function Todo({ task, removeTask, signalChange }) {
         signalChange({ ...task, tasks: task.tasks ? [...task.tasks] : [] });
     }
 
+    function removeNest(task) {
+        delete task.tasks;
+        signalChange(task);
+    }
+
     function checkCanComplete() {
         if (!task.tasks || task.tasks.every((item) => item.complete)) {
             signalChange({ ...task, complete: !task.complete });
@@ -77,6 +82,7 @@ export default function Todo({ task, removeTask, signalChange }) {
                         task={task}
                         setIsEditing={setIsEditing}
                         createNest={createNest}
+                        removeNest={removeNest}
                         removeTask={removeTask}
                     />
                 )}
