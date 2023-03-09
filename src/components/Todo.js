@@ -60,9 +60,7 @@ export default function Todo({ task, removeTask, signalChange }) {
               onBlur={() => submit()}
             />
           ) : (
-            <div className="label">
-              {task.label} {`${task.complete}`}
-            </div>
+            <div className="label">{task.label}</div>
           )}
         </div>
 
