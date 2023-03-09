@@ -1,2 +1,1 @@
-# react-nested-todo
-Created with CodeSandbox
+# Tutorial plugin for nestable task app

@@ -1,0 +1,116 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #ccc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.icon {
+  color: gray;
+  transition: all 0.2s;
+}
+.icon:hover {
+  scale: 1.2;
+  color: black;
+}
+
+.App {
+  font-family: sans-serif;
+  padding: 3rem 1rem;
+  width: 50%;
+  min-width: 400px;
+}
+
+.TodoList {
+  padding: 0;
+  margin-left: 1rem;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.Todo {
+  background: white;
+  display: flex;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  justify-content: space-between;
+  transition: all 0.2s;
+  user-select: none;
+  align-items: center;
+}
+
+.Todo:last-of-type {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.Todo .label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.Todo.complete {
+  color: gray;
+  background: #ddd;
+  text-decoration: line-through;
+}
+
+.Todo .actions {
+  display: flex;
+  width: 0;
+  padding-left: 0;
+  margin-left: 0;
+  transition: all 0.2s;
+  justify-content: flex-end;
+}
+
+.Todo .actions .icon {
+  font-size: 1.7rem;
+  padding: 0 0.2rem;
+}
+
+.Todo:hover .actions {
+  width: 10rem;
+}
+
+.status {
+  width: 0;
+  font-size: 1.2rem;
+}
+
+.Todo:hover .status {
+  width: 2rem;
+  color: limegreen;
+  padding-right: 0.3rem;
+}
+
+.Todo:hover .status.undo {
+  color: unset;
+}
+
+.Todo .label-wrap {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  border: none;
+  display: flex;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  transition: all 0.2s;
+  user-select: none;
+  align-items: center;
+}
+
+.TodoList.signalIncomplete > .Todo:not(.complete) {
+  transition: all 0.2s;
+  box-shadow: 0px 0px 7px red;
+  background: #ffcccc;
+}
