@@ -2,7 +2,7 @@ html,
 body {
     margin: 0;
     padding: 0;
-    background: #ccc;
+    background: #c9c3cd;
 }
 
 * {
@@ -15,7 +15,7 @@ body {
 }
 .icon:hover {
     scale: 1.2;
-    color: black;
+    color: rgb(25, 0, 80);
 }
 
 .App {
@@ -28,13 +28,13 @@ body {
 .TodoList {
     padding: 0;
     margin-left: 1rem;
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(75, 0, 130, 0.2);
 }
 
 .Todo {
-    background: white;
+    background: #ffffe3;
     display: flex;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(75, 0, 130, 0.2);
     justify-content: space-between;
     transition: all 0.2s;
     user-select: none;
@@ -47,7 +47,7 @@ body {
 }
 
 .Todo:last-of-type {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(75, 0, 130, 0.2);
 }
 
 .Todo .label {
@@ -104,6 +104,7 @@ body {
 }
 
 input {
+    background: ffffe3;
     width: 100%;
     border: none;
     display: flex;
@@ -116,7 +117,7 @@ input {
 
 .TodoList.signalIncomplete > .Todo:not(.complete) {
     transition: all 0.2s;
-    box-shadow: 0px 0px 7px red;
+    box-shadow: 0px 0px 3px rgba(255, 0, 0, 0.5);
     background: #ffcccc;
 }
 
@@ -127,15 +128,15 @@ input {
     z-index: 10;
     padding: 0rem;
     left: -1.6rem;
-    color: rgba(0, 0, 0, 0.3);
-    border: 1.75px solid rgba(0, 0, 0, 0.3);
-    background: #ccc;
+    color: rgba(35, 0, 90, 0.3);
+    border: 1.75px solid rgba(35, 0, 90, 0.3);
+    background: #c9c3cd;
     background-clip: content-box;
 }
 
 .collapse:hover {
-    color: rgba(0, 0, 0, 0.5);
-    border: 1.75px solid rgba(0, 0, 0, 0.5);
+    color: rgba(35, 0, 90, 0.5);
+    border: 1.75px solid rgba(35, 0, 90, 0.5);
 }
 
 .collapse:hover ~ .label-wrap .status,
