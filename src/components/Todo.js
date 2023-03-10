@@ -3,7 +3,12 @@ import TodoActions from "./TodoActions";
 import TodoList from "./TodoList";
 import { MdCheck, MdUndo, MdRemove, MdAdd } from "react-icons/md";
 
-export default function Todo({ task, removeTask, signalChange }) {
+export default function Todo({
+    task,
+    removeTask,
+    signalChange,
+    freezeCompleted,
+}) {
     const [isEditing, setIsEditing] = useState(false);
     const [newLabel, setNewLabel] = useState(task.label);
     const [signalIncomplete, setSignalIncomplete] = useState(false);
@@ -44,6 +49,9 @@ export default function Todo({ task, removeTask, signalChange }) {
     }
 
     function checkCanComplete() {
+        if (freezeCompleted) {
+            return;
+        }
         if (!task.tasks || task.tasks.every((item) => item.complete)) {
             signalChange({ ...task, complete: !task.complete });
         } else {
@@ -68,11 +76,12 @@ export default function Todo({ task, removeTask, signalChange }) {
                     ))}
 
                 <div className="label-wrap" onClick={() => checkCanComplete()}>
-                    {task.complete ? (
-                        <MdUndo className="icon status undo" />
-                    ) : (
-                        <MdCheck className={`icon status`} />
-                    )}
+                    {!freezeCompleted &&
+                        (task.complete ? (
+                            <MdUndo className="icon status undo" />
+                        ) : (
+                            <MdCheck className={`icon status`} />
+                        ))}
 
                     {isEditing ? (
                         <input
@@ -108,6 +117,7 @@ export default function Todo({ task, removeTask, signalChange }) {
                         isCollapsed && "collapsed"
                     }`}
                     signalChange={updateTasks}
+                    freezeCompleted={!!task.complete}
                 />
             )}
         </>

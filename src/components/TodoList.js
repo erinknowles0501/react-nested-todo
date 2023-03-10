@@ -10,6 +10,7 @@ export default function TodoList({
     signalChange,
     removeTask,
     addTask,
+    freezeCompleted,
 }) {
     function removeTask(task) {
         const newTasks = tasks.filter((item) => item.id !== task.id);
@@ -21,13 +22,6 @@ export default function TodoList({
         newTasks.push(task);
         signalChange(newTasks);
     }
-
-    // function updateTask(task, updateObj) {
-    //   const newTasks = [...tasks];
-    //   const oldTaskIndex = newTasks.findIndex((item) => item.id === task.id);
-    //   newTasks[oldTaskIndex] = { ...newTasks[oldTaskIndex], ...updateObj };
-    //   setTasks(newTasks);
-    // }
 
     function updateTasks(task) {
         signalChange(generateNewTasks(task));
@@ -52,6 +46,7 @@ export default function TodoList({
                         key={index}
                         signalChange={updateTasks}
                         generateNewTasks={generateNewTasks}
+                        freezeCompleted={freezeCompleted}
                     />
                 );
             })}
