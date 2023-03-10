@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import TodoActions from "./TodoActions";
 import TodoList from "./TodoList";
-import { MdCheck, MdUndo } from "react-icons/md";
+import { MdCheck, MdUndo, MdRemove, MdAdd } from "react-icons/md";
 
 export default function Todo({ task, removeTask, signalChange }) {
     const [isEditing, setIsEditing] = useState(false);
     const [newLabel, setNewLabel] = useState(task.label);
     const [signalIncomplete, setSignalIncomplete] = useState(false);
+    const [isCollapsed, setIsCollapsed] = useState(false);
 
     useEffect(() => {
         if (signalIncomplete === true) {
@@ -53,6 +54,19 @@ export default function Todo({ task, removeTask, signalChange }) {
     return (
         <>
             <div className={`Todo ${task.complete ? "complete" : ""}`}>
+                {task.tasks &&
+                    (isCollapsed ? (
+                        <MdAdd
+                            className="icon collapse"
+                            onClick={() => setIsCollapsed(false)}
+                        />
+                    ) : (
+                        <MdRemove
+                            className="icon collapse"
+                            onClick={() => setIsCollapsed(true)}
+                        />
+                    ))}
+
                 <div className="label-wrap" onClick={() => checkCanComplete()}>
                     {task.complete ? (
                         <MdUndo className="icon status undo" />
@@ -90,7 +104,9 @@ export default function Todo({ task, removeTask, signalChange }) {
             {task.tasks && (
                 <TodoList
                     tasks={task.tasks}
-                    className={signalIncomplete ? "signalIncomplete" : ""}
+                    className={`${signalIncomplete && "signalIncomplete"} ${
+                        isCollapsed && "collapsed"
+                    }`}
                     signalChange={updateTasks}
                 />
             )}
