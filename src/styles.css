@@ -29,6 +29,16 @@ body {
     padding: 0;
     margin-left: 1rem;
     border-left: 1px solid rgba(75, 0, 130, 0.2);
+    position: relative;
+    max-height: 1000px;
+    transition: all 0.175s;
+    transition-timing-function: ease-in-out;
+}
+
+.TodoList.collapsed {
+    max-height: 0;
+    overflow: hidden;
+    z-index: -1;
 }
 
 .Todo {
@@ -143,9 +153,4 @@ input {
 .collapse:hover ~ .actions {
     width: 0;
     padding-right: 0;
-}
-
-.TodoList.collapsed {
-    height: 0;
-    overflow: hidden;
 }
