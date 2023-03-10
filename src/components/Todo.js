@@ -61,7 +61,11 @@ export default function Todo({
 
     return (
         <>
-            <div className={`Todo ${task.complete ? "complete" : ""}`}>
+            <div
+                className={`Todo ${task.complete ? "complete" : ""} ${
+                    freezeCompleted && "frozen"
+                }`}
+            >
                 {task.tasks &&
                     (isCollapsed ? (
                         <MdAdd

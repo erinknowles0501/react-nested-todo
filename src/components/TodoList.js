@@ -51,7 +51,7 @@ export default function TodoList({
                 );
             })}
 
-            <InsertTodo addTask={addTask} />
+            {!freezeCompleted && <InsertTodo addTask={addTask} />}
         </div>
     );
 }
